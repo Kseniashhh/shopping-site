@@ -13,7 +13,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+       <!--  <tr>
             <td>Ancient Watermelon</td>
             <td>5</td>
             <td>$3.00</td>
@@ -36,11 +36,22 @@
             <td>2</td>
             <td>$3.00</td>
             <td>$6.00</td>
+        </tr> -->
+
+        {% for melon in display_melon %}
+
+        <tr>
+            <td>{{ melon.common_name }}</td>
+            <td>{{ session['cart'][melon.melon_id]}}</td>
+            <td>{{ melon.price_str() }}</td>
+            <td>{{ '$%.2f'|format(session['cart'][melon.melon_id] * melon.price) }}</td>
         </tr>
+        {% endfor %}
+
         </tbody>
     </table>
 
-    <h3>Total: $27.00</h3>
+   <!--  <h3>Total: {{ '$%.2f'|format(session['cart'][display_melon[i].melon_id] * display_melon[i].price) }}</h3> -->
 
     <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
 
